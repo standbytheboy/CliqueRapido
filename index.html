@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Click Rápido!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> </head>
+<body>
+    <header>
+        <h1 class="title">Jogo Click Rápido!</h1>
+    </header>
+
+    <main class="game-container">
+        <p class="description">
+            Ao clicar em "Iniciar Jogo", um quadrado azul e um vermelho aparecerão.
+            Acerte o <span class="highlight-blue">azul</span> para ganhar pontos, mas evite o <span class="highlight-red">vermelho</span>, ou será Game Over!
+            Seja rápido!
+        </p>
+
+        <div class="stats-container">
+            <p id="scoreDisplay" class="game-stat">Pontos: 0</p>
+            <p id="timerDisplay" class="game-stat">Tempo: 30s</p>
+        </div>
+        
+        <button id="start-button" class="action-button">Iniciar Jogo</button>
+
+        <div id="game-area">
+            <div id="square" class="game-square blue-square"></div>
+            <div id="square2" class="game-square red-square"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

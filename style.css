@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-bg: linear-gradient(135deg, #c96ded, #2193b0); 
+    --secondary-bg: #e0f2f7; 
+    --text-color-light: #f8f9fa; 
+    --text-color-dark: #343a40; 
+    --accent-blue: #007bff; 
+    --accent-red: #dc3545;  
+    --gradient-text: linear-gradient(45deg, #ff7e5f, #feb47b, #ff7e5f); 
+    --game-area-border: 4px solid rgba(255, 255, 255, 0.3);
+    --button-gradient: linear-gradient(45deg, #4CAF50, #8BC34A); 
+    --button-hover-gradient: linear-gradient(45deg, #8BC34A, #4CAF50);
+}
+
+/* --- Reset e Estilos Básicos --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--primary-bg);
+    color: var(--text-color-light);
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Header --- */
+header {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.title {
+    font-family: 'Press Start 2P', cursive; /* Fonte de pixel art para título */
+    font-size: clamp(1.8rem, 6vw, 2rem);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.2); 
+    margin: 0;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+
+/* --- Main Container --- */
+.game-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Descrição --- */
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    color: var(--text-color-light);
+    margin: 2rem 0 0;
+}
+
+.highlight-blue {
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.highlight-red {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/* --- Status do Jogo (Pontos, Timer) --- */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espaço entre os elementos */
+    width: 100%;
+}
+
+.game-stat {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+}
+
+/* --- Botão de Iniciar --- */
+.action-button {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 30px;
+    background-image: var(--button-gradient);
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.action-button:hover {
+    background-image: var(--button-hover-gradient);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.action-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-image: linear-gradient(45deg, #777, #555);
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Área do Jogo --- */
+#game-area {
+    width: 90vw;
+    max-width: 25rem;
+    aspect-ratio: 1 / 1;
+    border: var(--game-area-border);
+    border-radius: 25px; 
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Quadrados do Jogo --- */
+.game-square {
+    --square-size: clamp(2vw, 40px, 2vw);
+    width: var(--square-size);
+    height: var(--square-size);
+    position: absolute;
+    cursor: pointer;
+    display: none; 
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.1s ease-out, background-color 0.1s ease-out; 
+    will-change: transform, left, top; /* Otimização de performance para animação */
+}
+
+.game-square:hover {
+    transform: scale(1.05); 
+}
+
+.blue-square {
+    background-color: var(--accent-blue);
+    border: 2px solid #0056b3; 
+}
+
+.blue-square:active {
+    background-color: #0056b3; 
+    transform: scale(0.95);
+}
+
+.red-square {
+    background-color: var(--accent-red);
+    border: 2px solid #b30000;
+}
+
+.red-square:active {
+    background-color: #b30000;
+    transform: scale(0.95);
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+    }
+    .game-stat {
+        font-size: 1.5rem;
+    }
+    .action-button {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .description {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .description {
+        font-size: 0.9rem;
+    }
+    .game-stat {
+        font-size: 1.3rem;
+        min-width: 100px;
+        padding: 6px 10px;
+    }
+    .action-button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.8rem;
+    }
+    .game-square {
+        --square-size: clamp(8vw, 35px, 10vw);
+    }
+}

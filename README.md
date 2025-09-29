@@ -2,8 +2,6 @@
 
 Um jogo de navegador simples, divertido e viciante, desenvolvido para testar sua agilidade e precisão. O objetivo é clicar no quadrado azul o máximo de vezes possível em 30 segundos, evitando o quadrado vermelho.
 
-*(Sugestão: substitua esta imagem por uma captura de tela ou GIF do seu jogo em ação)*
-
 -----
 
 ## 🚀 Como Jogar
